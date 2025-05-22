@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Invoice</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<link rel="stylesheet" href="./style.css"/>
+<style>
+  
+</style>
+</head>
+<body>
+  
+  <div class="invoice-box">
+    <!-- Top Banner Image -->
+    <img src="./INVOICE (5) (1) (1).png" alt="Top Banner" class="top-banner" />
+<div style="display: block;">
+  <div class="header">
+    <div class="invoice-title" style="font-size: 32px; font-weight: bold;">INVOICE</div>
+   
+  </div>
+</div>
+
+<div style=" padding-left:60px ; display: flex; justify-content: space-between; gap: 40px; font-size: 20px; margin-top: 0px;">
+  <!-- Left Section -->
+  <div class="section" style="flex: 1;" >
+    <p>
+      <span class="company " style="font-weight: bold;">Invoice to:</span><br>
+      <input type="text" class="value" style="color: #000000; width: 100%; margin-top: 5px; " placeholder="Company Name" />
+      <input type="text" class="value" style="width: 100%; margin-top: 10px;" placeholder="H-98, Grham Industrial Area-1 ,Gujrat-11200" />
+    </p>
+
+    <p>
+      <span class="label " style="color: #000;">PAN No:</span><br>
+      <input type="text" class="value" style="width: 100%; margin-top: 5px;" placeholder="XXXXXXXXXXXXXXXXX" />
+    </p>
+
+    <p>
+      <span class="label " style="color: #000;">GSTIN:</span><br>
+      <input type="text" class="value" style="width: 100%; margin-top: 5px;" placeholder="yyyyyyyyyyyyyyyyyyy" />
+    </p>
+  <p>
+      <label>Date:</label>
+      <input type="text" style="width: 70%; margin-top: 5px; color: #000;
+      font-weight: bold;" placeholder="xx/yy/zzz" />
+    </p>
+
+    
+  </div>
+
+  <!-- Right Section -->
+   <div >
+  <div class="company" style="flex: 1; margin-top: 30px;">
+    <p><b>Bank Details:</b></p>
+    <p>
+      <label>Bank Name:</label>
+      <input type="text" style=" width: 70%; margin-top: 5px;  color: #000;
+      font-weight: bold;" placeholder="xxxx Bank" />
+    </p>
+    <p>
+      <label>Account No:</label><br>
+      <input type="text" style=" width: 70%; margin-top: 5px;  color: #000;
+      font-weight: bold;" placeholder="4754537990" />
+    </p>
+    <p>
+      <label>IFSC Code:</label>
+      <input type="text" style="width: 70%;  margin-top: 5px;  color: #000;
+      font-weight: bold;" placeholder="XYZY09233" />
+    </p>
+    <p>
+      <label>Branch:</label>
+      <input type="text" style="width: 70%; margin-top: 5px; color: #000;
+      font-weight: bold;" placeholder="Coimbatore" />
+    </p>
+  </div>
+</div>
+</div>
+<div style="padding: 12px;">
+ <table id="invoiceTable" style="width: 100%; border-collapse: collapse; border: 1px solid #ccc;">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Yahoo</th>
+      <th>Non Working</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+  <tbody id="invoiceBody">
+    <tr>
+      <td><input type="tel" placeholder="2025-05-21" /></td>
+      <td><input type="text" placeholder="Account Name" /></td>
+      <td><input type="text" placeholder="Detail" /></td>
+      <td><input type="number" step="0.01" class="price" placeholder="0" /></td>
+    </tr>
+    <tr>
+      <td><input type="tel" placeholder="2025-05-21" /></td>
+      <td><input type="text" placeholder="Account Name" /></td>
+      <td><input type="text" placeholder="Detail" /></td>
+      <td><input type="number" step="0.01" class="price" placeholder="0" /></td>
+    </tr>
+    <tr>
+      <td><input type="tel" placeholder="2025-05-21" /></td>
+      <td><input type="text" placeholder="Account Name" /></td>
+      <td><input type="text" placeholder="Detail" /></td>
+      <td><input type="number" step="0.01" class="price" placeholder="0" /></td>
+    </tr>
+    
+  </tbody>
+</table>
+<div style="margin-top: 20px; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; font-size: 16px;">
+
+  <div style="display: flex; gap: 40px; width: 300px; justify-content: space-between;">
+    <label>Sub Total</label>
+    <input type="number" id="subtotal" step="0.01" placeholder="0.00" readonly style="width: 150px;" />
+  </div>
+
+  <div style="display: flex; gap:20px; width: 250px; justify-content: space-between; padding-right: 60px;">
+    <label>GST <input type="number" id="gstPercent" step="0.01" placeholder="0%" style="width: 50px;" /></label>
+
+    <div style="display: flex; gap: 10px;">
+      
+      <input type="number" id="gstValue" step="0.01" placeholder="0" readonly style="width: 90px;" />
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px; width: 300px; justify-content: space-between; font-weight: bold; color: green;">
+    <label>Total</label>
+    <input type="number" id="grandTotal" step="0.01" placeholder="0" readonly style="width: 150px;" />
+  </div>
+
+</div>
+
+
+
+
+  <div class="footer">
+  <div class="contact" style="font-size: 18px;">
+    <p><b>CONTACT</b><br>
+    19/A,Subbaiaiah layout<br>
+    Kamarajar road,<br>
+    uppilipalayam post,<br>
+    Coimbatore-641015</p>
+  </div>
+  <div class="sign">
+    <p><b>Mr. Chandra Kumar</b><br>CEO & Founder</p>
+  </div>
+</div>
+
+
+    <!-- Bottom Banner Image -->
+</div>
+  </div>
+</body>
+<div style="text-align: CENTER; padding: 20px 30px;">
+  <!-- <button onclick="printInvoice()">Print</button> -->
+ 
+  <button onclick="downloadExcel()">Download Excel</button>
+   <button onclick="addRow()" >Add Row</button>
+</div>
+
+
+<script src="./assets/index.js"></script>
+</html>

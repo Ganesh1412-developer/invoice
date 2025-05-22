@@ -1,0 +1,129 @@
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ebfce4;
+    }
+
+    .invoice-box {
+      width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .top-banner, .bottom-banner {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+.header {
+  display: flex;
+  justify-content: flex-end; /* Right align */
+  align-items: center;
+  padding: 5px 30px 0 30px; /* Reduce top padding */
+   /* Pull it closer to the image */
+}
+
+
+
+       .invoice-title {
+      color: red;
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: -150px;
+
+    }
+
+    .section {
+      padding: 0 20px;
+      margin-top: 20px;
+    }
+    .company{
+       padding: 0 5px;
+      margin-top: 20px;
+    }
+
+    .section .label {
+      color: #747272;
+      
+    }
+
+    .section .value {
+      color: #000;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th {
+      background: #27ae60;
+      color: white;
+      padding: 10px;
+      text-align: left;
+    }
+
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .total-section td {
+      font-weight: bold;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 20px 30px;
+    }
+
+    .footer .contact {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer .sign {
+      text-align: right;
+      padding-right: 50px;
+      font-size: 18px;
+    }
+
+    .footer .sign b {
+      font-size: 26px;
+    }
+    input{
+      border: none;
+      font-size: 16px;
+    }
+button {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  margin-left: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #219150;
+}
+@media print {
+  button {
+    display: none !important;
+  }
+}
+
+
+
+  
